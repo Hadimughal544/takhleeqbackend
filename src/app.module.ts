@@ -13,7 +13,7 @@ import { AuthModule } from './auth/auth.module';
       host: '127.0.0.1',
       port: 3306,
       username: 'nestuser',
-      password: 'mypassword',
+      password: 'StrongPass123!',
       database: 'takhleeq',
       autoLoadEntities: true,
       synchronize: true,
