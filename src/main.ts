@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // ✅ Enable CORS for frontend requests
   app.enableCors({
-    origin: 'http://localhost:3001', // change to your Next.js port
+    origin: 'https://takhleeqconstructions.com', // change to your Next.js port
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
