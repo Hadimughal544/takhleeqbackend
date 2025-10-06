@@ -20,6 +20,7 @@ import { Projects } from './projects.entity/projects.entity';
 export class ProjectsController {
   constructor(private readonly projectService: ProjectsService) {}
 
+  // ---------- CREATE ----------
   @Post()
   @UseInterceptors(
     FileFieldsInterceptor(
@@ -64,21 +65,33 @@ export class ProjectsController {
     return this.projectService.create(projectData);
   }
 
+  // ---------- READ SINGLE ----------
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Projects> {
     return this.projectService.findOne(+id);
   }
 
+  // ---------- DELETE ----------
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.projectService.delete(+id);
   }
 
+  // ---------- UPDATE (ONLY TITLE + DESCRIPTION) ----------
   @Put(':id')
-  async update(@Param('id') id: string, @Body() body: Projects) {
-    return this.projectService.update(+id, body);
+  async update(
+    @Param('id') id: string,
+    @Body() body: { Title?: string; Description?: string },
+  ) {
+    const updateData: Partial<Projects> = {
+      Title: body.Title,
+      Description: body.Description,
+    };
+
+    return this.projectService.update(+id, updateData);
   }
 
+  // ---------- READ ALL / BY TITLE ----------
   @Get()
   async findByTitle(@Query('Title') title?: string) {
     if (title) {

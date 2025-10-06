@@ -30,8 +30,8 @@ export class ProjectsService {
   }
 
   async update(id: number, data: Partial<Projects>): Promise<Projects> {
-    const project = await this.findOne(id); // reuse findOne for check
-    Object.assign(project, data);
+    const project = await this.findOne(id); // check if exists
+    Object.assign(project, data); // merge new values
     return this.projectRepo.save(project);
   }
 
