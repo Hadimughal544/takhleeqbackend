@@ -13,7 +13,10 @@ async function bootstrap() {
     credentials: true,
   });
 
-  app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
+  app.use(
+    '/uploads',
+    express.static(join('/var/www/takhleeqbackend', 'uploads')),
+  );
 
   app.setGlobalPrefix('api');
 
