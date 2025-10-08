@@ -8,7 +8,7 @@ export class Projects {
   @Column()
   Title: string;
 
-  @Column()
+  @Column({ type: 'text' })
   Description: string;
 
   // ✅ Head (main) image
