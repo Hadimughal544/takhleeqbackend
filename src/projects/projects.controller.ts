@@ -30,7 +30,7 @@ export class ProjectsController {
       ],
       {
         storage: diskStorage({
-          destination: './var/www/uploads/projects',
+          destination: '/var/www/uploads/projects',
           filename: (req, file, cb) => {
             const uniqueSuffix =
               Date.now() + '-' + Math.round(Math.random() * 1e9);
